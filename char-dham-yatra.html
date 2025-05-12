@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Char Dham Yatra Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    #countdown {
+      font-size: 24px;
+      color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <h1>चार धाम यात्रा 2025 की उल्टी गिनती</h1>
+  <p id="countdown">लोड हो रहा है...</p>
+
+  <script>
+    // Char Dham Yatra Start Date (example: 10 May 2025)
+    const yatraDate = new Date("2025-05-10T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = yatraDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerText = "यात्रा शुरू हो चुकी है!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerText =
+        ${days} दिन ${hours} घंटे ${minutes} मिनट ${seconds} सेकंड बचे हैं;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
